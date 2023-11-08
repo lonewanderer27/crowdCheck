@@ -33,16 +33,16 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/icons8_back_30" />
 
-    <ImageButton
-        android:id="@+id/profilepicture"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="-50dp"
-        android:background="#00FFFFFF"
-        android:cropToPadding="false"
-        app:layout_constraintBottom_toTopOf="@+id/backview2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/view2" />
+<!--    <ImageButton-->
+<!--        android:id="@+id/profilepicture"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginBottom="-50dp"-->
+<!--        android:background="#00FFFFFF"-->
+<!--        android:cropToPadding="false"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/backview2"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/view2" />-->
 
     <EditText
         android:id="@+id/firstname"
@@ -134,7 +134,7 @@
         app:srcCompat="@drawable/cclogo2" />
 
     <ImageView
-        android:id="@+id/imageView10"
+        android:id="@+id/profilepicture"
         android:layout_width="119dp"
         android:layout_height="113dp"
         android:layout_marginTop="100dp"
