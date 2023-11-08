@@ -6,7 +6,6 @@ import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -30,7 +29,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class home extends AppCompatActivity {
 
-    ImageButton logout, toScanQR, toMap, notificationbtn, profilebtn;
+    ImageButton homeBtn, toScanQR, toMap, notificationBtn, profileBtn;
     GoogleSignInOptions gso;
     GoogleSignInClient gsc;
     TextView greetings, txtCounter;
@@ -43,24 +42,24 @@ public class home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
 
-        logout = findViewById(R.id.homebtn);
+        homeBtn = findViewById(R.id.homebtn);
         greetings = findViewById(R.id.userGreet);
         toScanQR = findViewById(R.id.toScanQR);
         toMap = findViewById(R.id.toMap);
-        notificationbtn = findViewById(R.id.notificationbtn);
-        profilebtn = findViewById(R.id.profilebtn);
+        notificationBtn = findViewById(R.id.notificationbtn);
+        profileBtn = findViewById(R.id.profilebtn);
 
         toScanQR.setOnClickListener(view -> {
             Intent intent = new Intent(home.this, QRActivity.class);
             startActivity(intent);
         });
 
-        notificationbtn.setOnClickListener(view -> {
+        notificationBtn.setOnClickListener(view -> {
             Intent intent = new Intent(home.this, notifActivity.class);
             startActivity(intent);
         });
 
-        profilebtn.setOnClickListener(view -> {
+        profileBtn.setOnClickListener(view -> {
             Intent intent = new Intent(home.this, profileActivity.class);
             startActivity(intent);
         });
@@ -75,14 +74,10 @@ public class home extends AppCompatActivity {
                 .build();
         gsc = GoogleSignIn.getClient(this,gso);
 
-//        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
-//        if (account != null){
-//            String Name = account.getDisplayName();
-//            greetings.setText(Name);
-//            Toast.makeText(this, "Login Success, welcome "+ Name, Toast.LENGTH_SHORT).show();
-//        }
-
-        logout.setOnClickListener(view -> signOut());
+        homeBtn.setOnClickListener(view -> {
+            Intent intent = new Intent(home.this, home.class);
+            startActivity(intent);
+        });
 
         incrementBtn = findViewById(R.id.incrementBtn);
         txtCounter = findViewById(R.id.txtCounter);
@@ -111,7 +106,19 @@ public class home extends AppCompatActivity {
             //getRoom1();
             room1.setValue(libRoom1 + 1);
         });
+
+        updateUsername();
     }
+
+    private void updateUsername() {
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+        if (account != null) {
+            String name = account.getGivenName();
+            greetings.setText(name);
+            Toast.makeText(this, "Login Success! Welcome " + name, Toast.LENGTH_SHORT).show();
+        }
+    }
+
     private void getRoom1(){
         databaseFacility = FirebaseDatabase.getInstance().getReference();
         DatabaseReference room1 = databaseFacility.child("Room1").child("Current");
