@@ -63,9 +63,12 @@ public class profileActivity extends AppCompatActivity {
         if (account != null) {
             // update the fields
             String profilePicUrl = account.getPhotoUrl() != null ? account.getPhotoUrl().toString() : "";
-            Picasso.get()
-                    .load(profilePicUrl)
-                    .into(profilePicture);
+            // only change profilePicUrl if it's not empty string
+            if (!profilePicUrl.equals("")){
+                Picasso.get()
+                        .load(profilePicUrl)
+                        .into(profilePicture);
+            }
 
             profilePicture.setImageURI(Uri.parse(profilePicUrl));
             email.setText(account.getEmail());
