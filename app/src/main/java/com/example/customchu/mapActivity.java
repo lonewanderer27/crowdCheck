@@ -30,12 +30,9 @@ public class mapActivity extends AppCompatActivity {
         setContentView(R.layout.library);
 
         mapBack = findViewById(R.id.mapBack);
-        mapBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(mapActivity.this, home.class);
-                startActivity(intent);
-            }
+        mapBack.setOnClickListener(view -> {
+            Intent intent = new Intent(mapActivity.this, home.class);
+            startActivity(intent);
         });
         btn2ndFloor = findViewById(R.id.btn2ndFloor);
         btn2ndFloor.setOnClickListener(new View.OnClickListener() {

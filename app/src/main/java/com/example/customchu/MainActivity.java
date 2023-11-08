@@ -33,12 +33,7 @@ public class MainActivity extends AppCompatActivity {
                 .build();
         gsc = GoogleSignIn.getClient(this,gso);
 
-        btnToSignup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                signIn();
-            }
-        });
+        btnToSignup.setOnClickListener(v -> signIn());
     }
 
     private void signIn() {

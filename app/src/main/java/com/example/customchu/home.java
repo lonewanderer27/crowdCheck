@@ -50,36 +50,24 @@ public class home extends AppCompatActivity {
         notificationbtn = findViewById(R.id.notificationbtn);
         profilebtn = findViewById(R.id.profilebtn);
 
-        toScanQR.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(home.this, QRActivity.class);
-                startActivity(intent);
-            }
+        toScanQR.setOnClickListener(view -> {
+            Intent intent = new Intent(home.this, QRActivity.class);
+            startActivity(intent);
         });
 
-        notificationbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(home.this, notifActivity.class);
-                startActivity(intent);
-            }
+        notificationbtn.setOnClickListener(view -> {
+            Intent intent = new Intent(home.this, notifActivity.class);
+            startActivity(intent);
         });
 
-        profilebtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(home.this, profileActivity.class);
-                startActivity(intent);
-            }
+        profilebtn.setOnClickListener(view -> {
+            Intent intent = new Intent(home.this, profileActivity.class);
+            startActivity(intent);
         });
 
-        toMap.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(home.this, mapActivity.class);
-                startActivity(intent);
-            }
+        toMap.setOnClickListener(view -> {
+            Intent intent = new Intent(home.this, mapActivity.class);
+            startActivity(intent);
         });
 
         gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -94,12 +82,7 @@ public class home extends AppCompatActivity {
 //            Toast.makeText(this, "Login Success, welcome "+ Name, Toast.LENGTH_SHORT).show();
 //        }
 
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                signOut();
-            }
-        });
+        logout.setOnClickListener(view -> signOut());
 
         incrementBtn = findViewById(R.id.incrementBtn);
         txtCounter = findViewById(R.id.txtCounter);
@@ -124,12 +107,9 @@ public class home extends AppCompatActivity {
         room1.addValueEventListener(postListener);
 
 
-        incrementBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //getRoom1();
-                room1.setValue(libRoom1 + 1);
-            }
+        incrementBtn.setOnClickListener(view -> {
+            //getRoom1();
+            room1.setValue(libRoom1 + 1);
         });
     }
     private void getRoom1(){

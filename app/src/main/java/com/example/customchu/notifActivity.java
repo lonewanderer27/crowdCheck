@@ -15,12 +15,9 @@ public class notifActivity extends AppCompatActivity {
         setContentView(R.layout.notifications);
 
         notifBack = findViewById(R.id.notifBack);
-        notifBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(notifActivity.this, home.class);
-                startActivity(intent);
-            }
+        notifBack.setOnClickListener(view -> {
+            Intent intent = new Intent(notifActivity.this, home.class);
+            startActivity(intent);
         });
     }
 }

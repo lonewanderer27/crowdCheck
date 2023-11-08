@@ -43,12 +43,9 @@ public class QRActivity extends AppCompatActivity {
         txtScan = findViewById(R.id.txtScan);
 
         qrBack = findViewById(R.id.qrBack);
-        qrBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(QRActivity.this, home.class);
-                startActivity(intent);
-            }
+        qrBack.setOnClickListener(view -> {
+            Intent intent = new Intent(QRActivity.this, home.class);
+            startActivity(intent);
         });
 
         databaseFacility = FirebaseDatabase.getInstance().getReference();

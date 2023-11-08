@@ -18,12 +18,9 @@ public class profileActivity extends AppCompatActivity {
         setContentView(R.layout.profile);
 
         profileBack = findViewById(R.id.profileBack);
-        profileBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(profileActivity.this, home.class);
-                startActivity(intent);
-            }
+        profileBack.setOnClickListener(view -> {
+            Intent intent = new Intent(profileActivity.this, home.class);
+            startActivity(intent);
         });
 
         logout = findViewById(R.id.toLogout);
