@@ -111,12 +111,7 @@ public class QRActivity extends AppCompatActivity {
             }
         });
 
-        scannerView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mCodeScanner.startPreview();
-            }
-        });
+        scannerView.setOnClickListener(view -> mCodeScanner.startPreview());
     }
 
     @Override
