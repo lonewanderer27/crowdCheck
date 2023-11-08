@@ -2,6 +2,7 @@ package com.example.customchu;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -16,6 +17,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
+
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,7 +36,21 @@ public class MainActivity extends AppCompatActivity {
                 .build();
         gsc = GoogleSignIn.getClient(this,gso);
 
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+        if (account != null) {
+            toHomeActivity();
+        }
+
         btnToSignup.setOnClickListener(v -> signIn());
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+        if (account != null) {
+            toHomeActivity();
+        }
     }
 
     private void signIn() {
@@ -51,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
                 task.getResult(ApiException.class);
                 toHomeActivity();
             } catch (ApiException e) {
+                Log.e("GoogleSignIn", Objects.requireNonNull(e.getMessage()));
                 Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
             }
         }
